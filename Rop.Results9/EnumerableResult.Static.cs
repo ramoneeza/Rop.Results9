@@ -59,10 +59,18 @@ public partial class EnumerableResult<A>
     /// <param name="value"></param>
     public static implicit operator EnumerableResult<A>(A[] value) => new(value);
     /// <summary>
-    /// Implicit conversion from <see cref="List{T}"/> to <see cref="EnumerableResult{T}"/>
+    /// Implicitly converts a <see cref="List{A}"/> to an <see cref="EnumerableResult{A}"/>.
     /// </summary>
-    /// <param name="value"></param>
+    /// <param name="value">The list to be converted.</param>
+    /// <returns>An <see cref="EnumerableResult{A}"/> containing the elements of the list.</returns>
     public static implicit operator EnumerableResult<A>(List<A> value) => new(value);
+    /// <summary>
+    /// Implicitly converts a <see cref="ReadOnlySpan{T}"/> to an <see cref="EnumerableResult{A}"/>.
+    /// </summary>
+    /// <param name="value">The <see cref="ReadOnlySpan{T}"/> to convert.</param>
+    /// <returns>An <see cref="EnumerableResult{A}"/> containing the elements of the <see cref="ReadOnlySpan{T}"/>.</returns>
+    public static implicit operator EnumerableResult<A>(ReadOnlySpan<A> value) => new(value.ToArray());
+    
     /// <summary>
     /// Implicit conversion from Result{IEnumerable{A}} to <see cref="EnumerableResult{T}"/>
     /// </summary>
