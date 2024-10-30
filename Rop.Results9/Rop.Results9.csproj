@@ -7,7 +7,7 @@
 	  <PackageId>Rop.Results9</PackageId>
 	  <Product>Rop.Results9</Product>
 	  <Copyright />
-	  <Version>1.2.1</Version>
+	  <Version>1.2.3</Version>
 	  <PackageTags>helper-classes;results</PackageTags>
 	  <Description>Generic Results</Description>
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>

@@ -11,6 +11,7 @@
 * Copyright (c) 2024 Ramon Ordiales Plaza
 */
 
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Rop.Results9;
@@ -78,4 +79,17 @@ public partial class Error
     /// </summary>
     /// <param name="message">The message.</param>
     public static CastError Cast(string? message = null) => new(message);
+    /// <summary>
+    /// Creates a new instance of the <see cref="MultiError"/> class with the specified errors.
+    /// </summary>
+    /// <param name="errors">The collection of errors to include in the <see cref="MultiError"/>.</param>
+    /// <returns>
+    /// A new <see cref="MultiError"/> instance containing the specified errors, or <c>null</c> if the collection is empty.
+    /// </returns>
+    public static MultiError? Many(IEnumerable<Error> errors)
+    {
+        var all= errors.ToList();
+        if (!all.Any()) return null;
+        return new MultiError(all);
+    }
 }

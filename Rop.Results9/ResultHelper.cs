@@ -118,6 +118,21 @@ public static class ResultHelper
         if (iresult is Result<T> result) return result;
         return castfailed??Error.Cast($"Cast error to Result<{typeof(T)}>");
     }
+    /// <summary>
+    /// Converts an <see cref="IResult"/> to an <see cref="EnumerableResult{T}"/>.
+    /// </summary>
+    /// <typeparam name="T">The type of the elements in the enumerable result.</typeparam>
+    /// <param name="iresult">The result to convert.</param>
+    /// <param name="castfailed">An optional error to return if the cast fails.</param>
+    /// <returns>
+    /// An <see cref="EnumerableResult{T}"/> if the conversion is successful; otherwise, the specified <paramref name="castfailed"/> error or a default cast error.
+    /// </returns>
+    public static EnumerableResult<T> ToEnumerableResult<T>(this IResult? iresult, Error? castfailed=null)
+    {
+        if (iresult?.Error != null) return iresult.Error;
+        if (iresult is EnumerableResult<T> result) return result;
+        return castfailed??Error.Cast($"Cast error to Result<{typeof(T)}>");
+    }
     
     
 }
